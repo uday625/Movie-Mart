@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Intro = props => {
+const Intro = (props) => {
 
     const currentDate = () => {
         const date = new Date();

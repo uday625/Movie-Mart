@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Intro from './Intro/Intro'
+import ShowList from './ShowList/ShowList';
 import './App.css';
+
 
 
 class App extends Component {
@@ -11,13 +13,19 @@ class App extends Component {
     ]
   }
 
-  componentDidMount () {
-    const series = ["Vikings", "Game of Thrones"];
+  // componentDidMount () {
+  //  fetch("http://api.tvmaze.com/search/shows?q=Vikings")
+  //  .then(response => response.json())
+  //  .then(json => this.setState({series:json}))
+  // }
 
-    setTimeout(() =>{
-      this.setState ({series})
-    }, 2000
-    );
+  showSearchHandler = (event) =>{
+    fetch(`http://api.tvmaze.com/search/shows?q=${event.target.value}`)
+    .then(response => response.json())
+    .then(json => this.setState({series:json}))
+
+    // console.log(event);
+    // console.log(event.target.value);
   }
 
   render() {
@@ -25,6 +33,8 @@ class App extends Component {
       <div className="App">
         <Intro msg= "Welcome to Movie Mart!"/>
         <p> The length of the series array - {this.state.series.length}</p>
+        <input type="Text" onChange ={this.showSearchHandler}/>
+        <ShowList showList = {this.state.series}/>
       </div>
     );
   }
