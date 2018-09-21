@@ -9,7 +9,7 @@ const ShowList = props => {
     
     const SearchHeading = () => {
         let showCounter = props.showList.length;
-        // console.log(props);
+        let displayMessage
         return(props.showList.length === 0 ? <p>Search to find TV Show</p> : <h2>Available TV Show</h2>);
     }
     
